@@ -1,23 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    const button = document.createElement('button');
-    const buttonText = document.createTextNode('Add Square');
-    const container = document.createElement('container');
+    let button = document.createElement('button');
+    let buttonText = document.createTextNode('Add Square');
+    let container = document.createElement('div');
     button.appendChild(buttonText);
-    container.appendChild(button);
-    document.body.appendChild(container);
     container.className = 'container';
+    document.body.appendChild(button); 
 
     button.addEventListener('click', addSquare);
+    
+    let boxCount = 0;
+
+    document.body.appendChild(container);
 
     function addSquare() {
-        let div = document.createElement('div');
-        container.appendChild(div);
-        document.body.appendChild(container);
+        console.log("worked");
 
-        div.className = 'square';
-        let squares = document.getElementsByClassName('square');
-        div.id = squares.length - 1;
-    };
+        let box = document.createElement('div');
+        box.className = 'box';
+        box.id = boxCount;
+        box.innerText = boxCount++;
+    
+        container.appendChild(box);
+        
+    }; 
     
 })
