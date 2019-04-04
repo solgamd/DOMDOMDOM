@@ -15,23 +15,25 @@ document.addEventListener('DOMContentLoaded', function () {
     function addSquare() {
         let box = document.createElement('div');
         box.className = 'box';
-        //box.innerText = boxCount++;
+        
 
         container.appendChild(box);
-    
-        let boxText = boxCount;
-
-        box.addEventListener('mouseover', appear);
-
-        function appear() {
-            box.appendChild(boxText);
-        }
-
-        box.addEventListener('mouseout', disappear);
-
-        function disappear() {
-            box.remove(boxText);
-        }
+        
+        let boxText = document.createTextNode(boxCount);
+        boxText.id = 'boxCount';
+        boxText = boxCount++;
+        
+        box.addEventListener('mouseover', function() {
+            box.append(boxText);
+            
+        });
+// NEED TO MAKE TEXT INSIDE BOX DISAPPEAR
+        box.addEventListener('mouseout', function() {
+            document.getElementById('box').parentNode.removeChild(document.getElementById('boxCount'))
+            // var off = document.getElementById('boxCount');
+            // return off.parentNode.removeChild(off);
+            // //document.getElementById('boxCount').innerText = '';
+        });
 
     };
 
