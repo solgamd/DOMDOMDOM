@@ -50,22 +50,22 @@ document.addEventListener('DOMContentLoaded', function () {
         box.addEventListener('dblclick', removeSibling);
 
         function removeSibling() {
-            // FIND A WAY TO PREVENT CLICK ON BOX '0' FROM REMOVING FINAL BOX
-            if (box.id === 0) {
-                alert('There isn\'t a square before!');
+            let even = box.id % 2;
+            if (even === 0) {
+                if (box.nextSibling !== null) {
+                    box.nextSibling.remove();
+                } else {
+                    alert("There isn\'t a box to remove!");
+                }
+            } else {
+                if (box.previousSibling !== null) {
+                    box.previousSibling.remove();
+                } else {
+                    alert("There isn\'t a box to remove!");
+                }
             }
-            if (box.nextElementSibling === null) {
-                alert('There isn\'t a square after!');
-            }
-            if (box.id % 2 === 0) {
-                container.removeChild(box.nextSibling);
-            }
-            if (box.previousElementSibling === null) {
-                alert('There isn\'t a square before!');
-            }
-            if (box.id % 2 !== 0) {
-                container.removeChild(box.previousSibling);
-            }
+            
         }
+        
     };
 })
